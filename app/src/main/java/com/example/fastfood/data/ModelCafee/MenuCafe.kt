@@ -4,10 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Entity(tableName = "menu")
-data class CafeMenu(
-    @PrimaryKey val id: Int,
+@Entity(tableName = "Cafee")
+class MenuCafe (
+    @PrimaryKey
+    val id: Int,
 
     @ColumnInfo(name="type")
     val type: Int,

@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.fastfood.data.ModelCafee.CafeMenu
+import com.example.fastfood.data.ModelCafee.MenuCafe
 import com.example.fastfood.data.dao.CafeDao
 
-@Database(entities = [CafeMenu::class], version = 1)
+@Database(entities = [MenuCafe::class], version = 2)
 abstract class MenuDataBase : RoomDatabase() {
 
     companion object{
@@ -20,6 +20,7 @@ abstract class MenuDataBase : RoomDatabase() {
                 "menu-database.db"
             )
                 .createFromAsset("menu-database.db")
+                .allowMainThreadQueries()
                 .build()
     }
 

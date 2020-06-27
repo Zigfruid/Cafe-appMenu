@@ -5,10 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fastfood.R
+import com.example.fastfood.data.ModelCafee.MenuCafe
+import kotlinx.android.synthetic.main.rv_item.view.*
 
 class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-    var item: List<MenuCafee> = listOf()
+    var item: List<MenuCafe> = listOf()
     set(value) {
         field = value
         notifyDataSetChanged()
@@ -16,8 +18,9 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        fun popMod() {
-
+        fun popMod(menu: MenuCafe) {
+            itemView.tvItemProductName.text = menu.nameRus
+            itemView.tvItemProductCost.text = menu.cost
         }
 
     }
