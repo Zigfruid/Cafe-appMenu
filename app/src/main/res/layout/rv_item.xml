@@ -14,7 +14,6 @@
         android:id="@+id/ivItemPhoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/cola"
         android:layout_width="250dp"
         android:layout_height="210dp"/>
 
@@ -29,11 +28,11 @@
     <TextView
         android:id="@+id/tvItemProductCost"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/tvItemProductName"
-        app:layout_constraintTop_toTopOf="@id/tvItemProductName"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:textSize="20sp"
         android:text="2.5$"/>
 

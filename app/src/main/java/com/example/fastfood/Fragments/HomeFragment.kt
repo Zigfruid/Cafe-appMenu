@@ -19,7 +19,6 @@ class HomeFragment: Fragment(R.layout.home_fragment)  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val fragment = FragmentMenu()
         val bundle = Bundle()
         bundle.putInt(TYPE_ID, DRINK)

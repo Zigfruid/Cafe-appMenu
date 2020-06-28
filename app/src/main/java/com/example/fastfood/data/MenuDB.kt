@@ -4,25 +4,23 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.fastfood.data.ModelCafee.MenuCafe
-import com.example.fastfood.data.dao.CafeDao
+import com.example.fastfood.data.ModelCafee.CafeMenu
+import com.example.fastfood.data.dao.MenuDao
 
-@Database(entities = [MenuCafe::class], version = 2)
-abstract class MenuDataBase : RoomDatabase() {
-
+@Database(entities = [CafeMenu::class], version = 2)
+abstract class MenuDB : RoomDatabase() {
     companion object{
-        private lateinit var INSTANCE: MenuDataBase
-
-        fun getInstance(context: Context): MenuDataBase =
+        private lateinit var INSTANCE: MenuDB
+        fun getInstance(context: Context) : MenuDB =
             Room.databaseBuilder(
                 context,
-                MenuDataBase::class.java,
+                MenuDB::class.java,
                 "menu-database.db"
+
             )
                 .createFromAsset("menu-database.db")
                 .allowMainThreadQueries()
                 .build()
     }
-
-    abstract fun dao(): CafeDao
+   abstract fun dao():MenuDao
 }
