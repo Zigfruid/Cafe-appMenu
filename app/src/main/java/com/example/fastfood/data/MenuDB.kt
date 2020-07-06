@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.fastfood.data.ModelCafee.CafeMenu
 import com.example.fastfood.data.dao.MenuDao
 
-@Database(entities = [CafeMenu::class], version = 2)
+@Database(entities = [CafeMenu::class], version = 3)
 abstract class MenuDB : RoomDatabase() {
     companion object{
         private lateinit var INSTANCE: MenuDB

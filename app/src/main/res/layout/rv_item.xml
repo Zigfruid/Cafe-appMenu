@@ -1,42 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="250dp"
-    android:layout_height="355dp"
-    android:padding="16dp"
-    android:background="@drawable/back_item"
-    android:layout_marginStart="16dp"
-    android:layout_marginBottom="16dp"
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/ivItemPhoto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="250dp"
-        android:layout_height="210dp"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:id="@+id/tvItemProductName"
-        app:layout_constraintTop_toBottomOf="@id/ivItemPhoto"
-        android:text="Coca-cola"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tvItemProductCost"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:textSize="20sp"
-        android:text="2.5$"/>
+        app:cardCornerRadius="20dp"
+        android:layout_margin="8dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="255dp"
+            android:layout_height="300dp">
+
+            <ImageView
+                android:id="@+id/ivItemPhoto"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/picture5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="200dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/tvItemProductName"
+                android:layout_marginStart="16dp"
+                android:text="Coca-cola"
+                android:textColor="@color/redStroke"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/ivItemPhoto"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="20sp"
+                android:layout_below="@id/ivItemPhoto"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvItemProductCost"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvItemProductName"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@android:color/background_dark"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="16sp"
+                android:text="2.5$"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+    </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
 
 

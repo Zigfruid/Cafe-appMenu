@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fastfood.R
 import com.example.fastfood.data.ModelCafee.CafeMenu
+import com.example.fastfood.data.ModelCafee.MenuClickListener
 import kotlinx.android.synthetic.main.rv_item.view.*
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(private val listener: MenuClickListener): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     var item: List<CafeMenu> = listOf()
     set(value) {
@@ -16,13 +18,20 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
         notifyDataSetChanged()
     }
 
-
-
     inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         fun popMod(menu: CafeMenu) {
             itemView.tvItemProductName.text = menu.nameRus
            itemView.tvItemProductCost?.text = menu.cost
+            val imageResName = "picture${menu.id}"
+            Glide
+                .with(itemView)
+                .load(itemView.context.resources
+                    .getIdentifier(imageResName, "drawable", itemView.context.packageName))
+                .into(itemView.ivItemPhoto)
+            itemView.setOnClickListener {
+                listener.onItemMenuClickListener(menu.id)
+            }
         }
 
     }

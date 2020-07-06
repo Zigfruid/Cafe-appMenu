@@ -14,7 +14,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvFastFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/drink"/>
+            android:background="@drawable/back_drink"/>
         <ImageView
             android:id="@+id/btnPizza"
             android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
             app:layout_constraintStart_toEndOf="@id/btnDrink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pizza"/>
+            android:background="@drawable/back_pizza"/>
         <ImageView
             android:id="@+id/btnLavash"
             android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
             app:layout_constraintBottom_toBottomOf="@id/btnPizza"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/lavash"/>
+            android:background="@drawable/back_lavash"/>
         <ImageView
             android:id="@+id/btnBurger"
             android:layout_marginStart="16dp"
@@ -41,7 +41,7 @@
             app:layout_constraintBottom_toBottomOf="@id/btnLavash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/burger"/>
+            android:background="@drawable/back_burger"/>
 
 
 

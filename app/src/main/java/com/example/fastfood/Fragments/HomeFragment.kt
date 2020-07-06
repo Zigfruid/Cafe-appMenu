@@ -24,8 +24,17 @@ class HomeFragment: Fragment(R.layout.home_fragment)  {
         bundle.putInt(TYPE_ID, DRINK)
         fragment.arguments = bundle
         childFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment ).commit()
+        btnDrink.setImageResource(R.drawable.drink)
+        btnBurger.setImageResource(R.drawable.burgerfocused)
+        btnLavash.setImageResource(R.drawable.lavashfocused)
+        btnPizza.setImageResource(R.drawable.pizzafocused)
+
 
         btnDrink.setOnClickListener {
+            btnDrink.setImageResource(R.drawable.drink)
+            btnBurger.setImageResource(R.drawable.burgerfocused)
+            btnLavash.setImageResource(R.drawable.lavashfocused)
+            btnPizza.setImageResource(R.drawable.pizzafocused)
             val mFragment = FragmentMenu()
             val mBundle = Bundle()
             mBundle.putInt(TYPE_ID, DRINK)
@@ -34,6 +43,10 @@ class HomeFragment: Fragment(R.layout.home_fragment)  {
 
         }
         btnPizza.setOnClickListener {
+            btnDrink.setImageResource(R.drawable.drinkfocused)
+            btnBurger.setImageResource(R.drawable.burgerfocused)
+            btnLavash.setImageResource(R.drawable.lavashfocused)
+            btnPizza.setImageResource(R.drawable.pizza)
             val mFragment = FragmentMenu()
             val mBundle = Bundle()
             mBundle.putInt(TYPE_ID, PIZZA)
@@ -42,6 +55,10 @@ class HomeFragment: Fragment(R.layout.home_fragment)  {
 
         }
         btnLavash.setOnClickListener {
+            btnDrink.setImageResource(R.drawable.drinkfocused)
+            btnBurger.setImageResource(R.drawable.burgerfocused)
+            btnLavash.setImageResource(R.drawable.lavash)
+            btnPizza.setImageResource(R.drawable.pizzafocused)
             val mFragment = FragmentMenu()
             val mBundle = Bundle()
             mBundle.putInt(TYPE_ID, LAVASH)
@@ -50,6 +67,10 @@ class HomeFragment: Fragment(R.layout.home_fragment)  {
 
         }
         btnBurger.setOnClickListener {
+            btnDrink.setImageResource(R.drawable.drinkfocused)
+            btnBurger.setImageResource(R.drawable.burger)
+            btnLavash.setImageResource(R.drawable.lavashfocused)
+            btnPizza.setImageResource(R.drawable.pizzafocused)
             val mFragment = FragmentMenu()
             val mBundle = Bundle()
             mBundle.putInt(TYPE_ID, BURGER)
