@@ -25,6 +25,9 @@ data class CafeMenu (
    val cost: String,
 
    @ColumnInfo(name = "isOrdered")
-   var isOrdered : Int?
+   var isOrdered : Int?,
+
+   @ColumnInfo(name= "quantity")
+   var quantity : Int?
 
 )
