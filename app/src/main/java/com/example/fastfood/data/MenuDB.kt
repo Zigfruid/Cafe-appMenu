@@ -12,7 +12,7 @@ import com.example.fastfood.data.dao.MenuDao
 
 
 @Database(entities = [CafeMenu::class], version = 3)
-abstract class MenuDB : RoomDatabase() {
+abstract class MenuDB : RoomDatabase(), MenuDao {
 
 
     companion object{
@@ -42,5 +42,6 @@ abstract class MenuDB : RoomDatabase() {
                 .build()
     }
    abstract fun dao():MenuDao
+
 
 }

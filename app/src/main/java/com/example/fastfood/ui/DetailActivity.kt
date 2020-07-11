@@ -1,8 +1,8 @@
 package com.example.fastfood.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.fastfood.R
 import com.example.fastfood.data.MenuDB
@@ -17,6 +17,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var mMenu : CafeMenu
     private var menuId: Int = 0
     private lateinit var dao: MenuDao
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -42,17 +43,27 @@ class DetailActivity : AppCompatActivity() {
             setOrder()
             setTitle()
         }
+
+        ivFinish.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun setOrder() {
-        if (mMenu.isOrdered == null) {
+        if(mMenu.isOrdered == null) {
             mMenu.isOrdered = 1
-            Toast.makeText(this, "Вы заказали ${mMenu.nameRus}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                "Вы заказали ${mMenu.nameRus}",
+                Toast.LENGTH_SHORT)
+                .show()
+            dao.update(mMenu)
         } else {
+
             mMenu.isOrdered = 1 - mMenu.isOrdered!!
             Toast.makeText(this, "Вы отменили заказ ${mMenu.nameRus}", Toast.LENGTH_SHORT).show()
             setTitle()
-            dao.updateCafeMenu(mMenu)
+            dao.update(mMenu)
         }
     }
 
@@ -65,4 +76,5 @@ class DetailActivity : AppCompatActivity() {
             btnOrder.setBackgroundResource(R.drawable.back_cost)
         }
     }
+
 }

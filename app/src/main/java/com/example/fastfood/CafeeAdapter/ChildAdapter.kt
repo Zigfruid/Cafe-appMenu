@@ -8,23 +8,29 @@ import com.bumptech.glide.Glide
 import com.example.fastfood.R
 import com.example.fastfood.data.ModelCafee.CafeMenu
 import com.example.fastfood.data.ModelCafee.MenuClickListener
+import com.example.fastfood.data.dao.MenuDao
 import kotlinx.android.synthetic.main.rv_order_item.view.*
 import kotlin.random.Random
 
 class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
-    var item: List<CafeMenu> = listOf()
-        set(value) {
+    var item: MutableList<CafeMenu> = mutableListOf()
+    set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    inner class ChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun popModOrder(menu: CafeMenu) {
-            val a = Random.nextInt(10)
+    fun removeAt(position: Int){
+        item.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, item.size)
+    }
+
+    inner class ChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), ConnectWithDao {
+        fun popModOrder(menu: CafeMenu, position: Int) {
+            val a = Random.nextInt(1,10)
             itemView.tvItemOrderName.text = menu.nameRus
             itemView.tvCurier.text = "Курьер будет через $a мин"
-            //itemView.tvQuantity.text = " "
             val imageResName = "picture${menu.id}"
             Glide
                 .with(itemView)
@@ -35,6 +41,14 @@ class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapt
                 .into(itemView.ivItemOrderPhoto)
             itemView.setOnClickListener {
                     listener.onItemMenuClickListener(menu.id)
+               }
+            itemView.btnReOrder.setOnClickListener {
+                removeAt(position)
+            }
+        }
+        override fun removeFromOrder(cafeMenu: CafeMenu) {
+            if (cafeMenu.isOrdered == 1) {
+                cafeMenu.isOrdered = 1 - cafeMenu.isOrdered!!
             }
         }
     }
@@ -50,7 +64,8 @@ class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapt
         }
 
         override fun onBindViewHolder(holder: ChildViewHolder, position: Int) {
-            holder.popModOrder(item[position])
+            holder.popModOrder(item[position], position)
         }
+
 
 }

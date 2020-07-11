@@ -1,6 +1,7 @@
 package com.example.fastfood.data.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Update
 import com.example.fastfood.data.ModelCafee.CafeMenu
@@ -13,9 +14,13 @@ interface MenuDao {
     @Query("SELECT * FROM Cafee WHERE id = :id")
     fun getMenuById(id: Int) : CafeMenu
 
+
     @Update
-    fun updateCafeMenu(menu: CafeMenu)
+    fun update(menu: CafeMenu)
 
     @Query("SELECT * FROM Cafee WHERE isOrdered=1")
-    fun getOrderFromMenu() : List<CafeMenu>
+    fun getAllFromIsOrdered() : List<CafeMenu>
+
+
+
 }
