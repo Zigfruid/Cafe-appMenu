@@ -34,7 +34,7 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
 
     override fun onStart() {
         presenter = Presenter(dao , this)
-        presenter.getMenuFromOrder()//dddd
+        presenter.getMenuFromOrder()//dddddd
         super.onStart()
     }
 
