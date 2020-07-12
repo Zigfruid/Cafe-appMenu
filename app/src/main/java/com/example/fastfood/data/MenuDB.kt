@@ -11,7 +11,7 @@ import com.example.fastfood.data.dao.MenuDao
 
 
 
-@Database(entities = [CafeMenu::class], version = 3)
+@Database(entities = [CafeMenu::class], version = 4)
 abstract class MenuDB : RoomDatabase() {
 
 
@@ -27,7 +27,7 @@ abstract class MenuDB : RoomDatabase() {
                 database.execSQL("ALTER TABLE Cafee ADD COLUMN quantity INTEGER")
             }
         }
-        private lateinit var INSTANCE: MenuDB
+    var INSTANCE: MenuDB? = null
         fun getInstance(context: Context) : MenuDB =
             Room.databaseBuilder(
                 context,

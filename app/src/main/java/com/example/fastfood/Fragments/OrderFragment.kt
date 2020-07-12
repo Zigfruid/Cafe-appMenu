@@ -27,8 +27,8 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rv_order.adapter = mAdapter
-        rv_order.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        dao = MenuDB.getInstance(requireContext()).dao()
+        rv_order.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        dao = MenuDB.INSTANCE!!.dao()
 
     }
 

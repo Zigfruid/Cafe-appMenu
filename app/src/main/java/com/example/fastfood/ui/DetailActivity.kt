@@ -2,6 +2,7 @@ package com.example.fastfood.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.fastfood.R
@@ -23,6 +24,7 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
         menuId = intent.getIntExtra(MENU_ID , 0)
+
         dao = MenuDB.getInstance(this).dao()
         mMenu = dao.getMenuById(menuId)
         tvItemProductDetailName.text = mMenu.nameRus
@@ -48,11 +50,12 @@ class DetailActivity : AppCompatActivity() {
         if (mMenu.isOrdered == null) {
             mMenu.isOrdered = 1
             Toast.makeText(this, "Вы заказали ${mMenu.nameRus}", Toast.LENGTH_SHORT).show()
-        } else {
+//            MenuDB.INSTANCE!!.dao().updateCafeMenu(mMenu)
+     } else {
             mMenu.isOrdered = 1 - mMenu.isOrdered!!
             Toast.makeText(this, "Вы отменили заказ ${mMenu.nameRus}", Toast.LENGTH_SHORT).show()
             setTitle()
-            dao.updateCafeMenu(mMenu)
+            MenuDB.INSTANCE!!.dao().updateCafeMenu(mMenu)
         }
     }
 
