@@ -28,7 +28,7 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
         super.onViewCreated(view, savedInstanceState)
         rv_order.adapter = mAdapter
         rv_order.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        dao = MenuDB.INSTANCE!!.dao()
+        dao = MenuDB.INSTANCE!!.dao() //ghjkl;'
 
     }
 
