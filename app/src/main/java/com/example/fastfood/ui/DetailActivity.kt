@@ -51,11 +51,12 @@ class DetailActivity : AppCompatActivity() {
             mMenu.isOrdered = 1
             Toast.makeText(this, "Вы заказали ${mMenu.nameRus}", Toast.LENGTH_SHORT).show()
 //            MenuDB.INSTANCE!!.dao().updateCafeMenu(mMenu)
+            dao.updateCafeMenu(mMenu)
      } else {
             mMenu.isOrdered = 1 - mMenu.isOrdered!!
             Toast.makeText(this, "Вы отменили заказ ${mMenu.nameRus}", Toast.LENGTH_SHORT).show()
             setTitle()
-            MenuDB.INSTANCE!!.dao().updateCafeMenu(mMenu)
+            dao.updateCafeMenu(mMenu)
         }
     }
 
