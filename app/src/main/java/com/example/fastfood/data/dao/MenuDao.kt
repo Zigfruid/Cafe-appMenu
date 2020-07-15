@@ -15,11 +15,10 @@ interface MenuDao {
     fun getMenuById(id: Int) : CafeMenu
 
     @Update
-    fun updateCafeMenu(menu: CafeMenu)
+    fun updateMenu(menu: CafeMenu)
 
     @Query("SELECT * FROM Cafee WHERE isOrdered=1")
-    fun getOrderFromMenu() : List<CafeMenu>
+    fun getAllFromIsOrdered() : List<CafeMenu>
 
-    @Delete
-    fun deleteFromOrder(isOrdered : Int)
+
 }

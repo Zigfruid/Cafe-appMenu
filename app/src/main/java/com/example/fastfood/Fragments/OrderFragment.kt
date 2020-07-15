@@ -2,11 +2,11 @@ package com.example.fastfood.Fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fastfood.CafeeAdapter.ChildAdapter
-import com.example.fastfood.CafeeAdapter.MainAdapter
 import com.example.fastfood.MVP.MenuViewHelper
 import com.example.fastfood.MVP.Presenter
 import com.example.fastfood.R
@@ -15,14 +15,16 @@ import com.example.fastfood.data.ModelCafee.CafeMenu
 import com.example.fastfood.data.ModelCafee.MenuClickListener
 import com.example.fastfood.data.dao.MenuDao
 import com.example.fastfood.ui.DetailActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.order_fragment.*
 
 class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuClickListener {
 
-    private val mAdapter =  ChildAdapter(this)
+
     private lateinit var dao: MenuDao
     private lateinit var presenter: Presenter
-
+    private lateinit var mMenu : CafeMenu
+    private val mAdapter =  ChildAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,16 +33,25 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
         dao = MenuDB.getInstance(requireContext()).dao() //ghjkl;'ffff
 
 
-    }
+        btnBuy.setOnClickListener {
+            val dialog = BottomSheetDialog(requireContext())
+            val bottomView = LayoutInflater.from(context).inflate(R.layout.dialog_checklist, null)
+            dialog.setContentView(bottomView)
+            dialog.behavior.setPeekHeight(1200, true)
+            dialog.show()
+        }
 
+    }
     override fun onStart() {
         presenter = Presenter(dao , this)
         presenter.getMenuFromOrder()//dddddd
         super.onStart()
     }
 
+
+
     override fun fillData(models: List<CafeMenu>) {
-        mAdapter.item = models
+        mAdapter.item = models as MutableList<CafeMenu>
     }
 
     override fun onItemMenuClickListener(id: Int) {
@@ -48,4 +59,5 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
             mIntent.putExtra(DetailActivity.MENU_ID, id)
             startActivity(mIntent)
     }
+
 }

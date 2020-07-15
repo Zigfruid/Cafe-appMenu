@@ -13,32 +13,38 @@ import kotlin.random.Random
 
 class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
-    var item: List<CafeMenu> = listOf()
-        set(value) {
+    var item: MutableList<CafeMenu> = mutableListOf()
+    set(value) {
             field = value
             notifyDataSetChanged()
         }
 
+    fun removeAt(position: Int){
+        item.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, item.size)
+    }
+
     inner class ChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun popModOrder(menu: CafeMenu) {
-            val a = Random.nextInt(10)
+        fun popModOrder(menu: CafeMenu, position: Int) {
+            val a = Random.nextInt(1,10)
             itemView.tvItemOrderName.text = menu.nameRus
             itemView.tvCurier.text = "Курьер будет через $a мин"
-            //itemView.tvQuantity.text = " "
             val imageResName = "picture${menu.id}"
             Glide
                 .with(itemView)
-                .load(
-                    itemView.context.resources
-                        .getIdentifier(imageResName, "drawable", itemView.context.packageName)
-                )
+                .load(itemView.context.resources.getIdentifier(imageResName, "drawable", itemView.context.packageName))
                 .into(itemView.ivItemOrderPhoto)
             itemView.setOnClickListener {
                     listener.onItemMenuClickListener(menu.id)
+               }
+            itemView.btnReOrder.setOnClickListener {
+                removeAt(position)
             }
-        }
-    }
 
+        }
+
+    }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildViewHolder {
             val itemView: View =
                 LayoutInflater.from(parent.context).inflate(R.layout.rv_order_item, parent, false)
@@ -50,7 +56,8 @@ class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapt
         }
 
         override fun onBindViewHolder(holder: ChildViewHolder, position: Int) {
-            holder.popModOrder(item[position])
+            holder.popModOrder(item[position], position)
         }
+
 
 }

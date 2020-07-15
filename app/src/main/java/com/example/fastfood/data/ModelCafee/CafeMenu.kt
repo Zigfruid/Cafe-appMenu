@@ -28,6 +28,6 @@ data class CafeMenu (
    var isOrdered : Int?,
 
    @ColumnInfo(name= "quantity")
-   var quantity : Int?
+   var quantity : String?
 
 )

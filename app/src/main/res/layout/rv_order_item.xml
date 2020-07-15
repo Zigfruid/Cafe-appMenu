@@ -63,6 +63,7 @@
                 android:textSize="16sp"
                 android:text="Ваш заказ будет через 5 мин курьер впути"/>
             <Button
+                android:id="@+id/btnReOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Возврат"
