@@ -29,20 +29,25 @@ abstract class MenuDB : RoomDatabase() {
                 database.execSQL("ALTER TABLE Cafee ADD COLUMN quantity INTEGER")
             }
         }
-        private lateinit var INSTANCE: MenuDB
-        fun getInstance(context: Context): MenuDB =
-            Room.databaseBuilder(
-                context,
-                MenuDB::class.java,
-                "menu-database.db"
-            )
-                .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
-                .createFromAsset("menu-database.db")
-                .allowMainThreadQueries()
-                .fallbackToDestructiveMigration()
-                .build()
+        lateinit var INSTANCE: MenuDB
+        fun getInstance(context: Context): MenuDB {
+            return if (::INSTANCE.isInitialized) {
+                return INSTANCE
+            } else {
+                INSTANCE = Room.databaseBuilder(
+                    context,
+                    MenuDB::class.java,
+                    "menu-database.db"
+                )
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                    .createFromAsset("menu-database.db")
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build()
+                INSTANCE
+            }
+        }
     }
    abstract fun dao():MenuDao
-
 
 }
