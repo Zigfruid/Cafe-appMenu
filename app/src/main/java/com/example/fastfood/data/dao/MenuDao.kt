@@ -14,13 +14,13 @@ interface MenuDao {
     @Query("SELECT * FROM Cafee WHERE id = :id")
     fun getMenuById(id: Int) : CafeMenu
 
-
     @Update
-    fun update(menu: CafeMenu)
+    fun updateMenu(menu: CafeMenu)
 
     @Query("SELECT * FROM Cafee WHERE isOrdered=1")
     fun getAllFromIsOrdered() : List<CafeMenu>
 
-
+//    @Query("DELETE FROM Cafee WHERE isOrdered=1")
+//    fun removeFromOrder() : List<CafeMenu>
 
 }

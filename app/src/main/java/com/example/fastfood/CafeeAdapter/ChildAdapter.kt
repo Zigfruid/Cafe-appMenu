@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.example.fastfood.R
 import com.example.fastfood.data.ModelCafee.CafeMenu
 import com.example.fastfood.data.ModelCafee.MenuClickListener
-import com.example.fastfood.data.dao.MenuDao
 import kotlinx.android.synthetic.main.rv_order_item.view.*
 import kotlin.random.Random
 
@@ -26,7 +25,7 @@ class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapt
         notifyItemRangeChanged(position, item.size)
     }
 
-    inner class ChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), ConnectWithDao {
+    inner class ChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun popModOrder(menu: CafeMenu, position: Int) {
             val a = Random.nextInt(1,10)
             itemView.tvItemOrderName.text = menu.nameRus
@@ -34,10 +33,7 @@ class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapt
             val imageResName = "picture${menu.id}"
             Glide
                 .with(itemView)
-                .load(
-                    itemView.context.resources
-                        .getIdentifier(imageResName, "drawable", itemView.context.packageName)
-                )
+                .load(itemView.context.resources.getIdentifier(imageResName, "drawable", itemView.context.packageName))
                 .into(itemView.ivItemOrderPhoto)
             itemView.setOnClickListener {
                     listener.onItemMenuClickListener(menu.id)
@@ -45,14 +41,10 @@ class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapt
             itemView.btnReOrder.setOnClickListener {
                 removeAt(position)
             }
-        }
-        override fun removeFromOrder(cafeMenu: CafeMenu) {
-            if (cafeMenu.isOrdered == 1) {
-                cafeMenu.isOrdered = 1 - cafeMenu.isOrdered!!
-            }
-        }
-    }
 
+        }
+
+    }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildViewHolder {
             val itemView: View =
                 LayoutInflater.from(parent.context).inflate(R.layout.rv_order_item, parent, false)

@@ -7,7 +7,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fastfood.CafeeAdapter.ChildAdapter
-import com.example.fastfood.CafeeAdapter.ConnectWithDao
 import com.example.fastfood.MVP.MenuViewHelper
 import com.example.fastfood.MVP.Presenter
 import com.example.fastfood.R
@@ -19,7 +18,7 @@ import com.example.fastfood.ui.DetailActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.order_fragment.*
 
-class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuClickListener, ConnectWithDao {
+class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuClickListener {
 
 
     private lateinit var dao: MenuDao
@@ -59,9 +58,5 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
             mIntent.putExtra(DetailActivity.MENU_ID, id)
             startActivity(mIntent)
     }
-    override fun removeFromOrder(cafeMenu: CafeMenu) {
-        if (cafeMenu.isOrdered == 1) {
-            cafeMenu.isOrdered = 1 - cafeMenu.isOrdered!!
-        }
-    }
+
 }

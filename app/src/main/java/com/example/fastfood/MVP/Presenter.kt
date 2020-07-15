@@ -10,7 +10,8 @@ class Presenter(private val dao: MenuDao, private val view : MenuViewHelper) {
     }
         fun  getMenuFromOrder(){
         view.fillData(dao.getAllFromIsOrdered())
-
         }
-
+//    fun removeFromOrder(){
+//        view.fillData(dao.removeFromOrder())
+//    }
 }
