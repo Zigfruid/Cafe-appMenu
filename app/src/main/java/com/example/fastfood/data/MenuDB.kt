@@ -11,8 +11,9 @@ import com.example.fastfood.data.dao.MenuDao
 
 
 
-@Database(entities = [CafeMenu::class], version = 3)
+@Database(entities = [CafeMenu::class], version = 4)
 abstract class MenuDB : RoomDatabase() {
+
 
 
     companion object {

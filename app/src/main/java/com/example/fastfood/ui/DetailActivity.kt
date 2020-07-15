@@ -1,6 +1,7 @@
 package com.example.fastfood.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -24,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
         menuId = intent.getIntExtra(MENU_ID , 0)
+
         dao = MenuDB.getInstance(this).dao()
         mMenu = dao.getMenuById(menuId)
         tvItemProductDetailName.text = mMenu.nameRus
