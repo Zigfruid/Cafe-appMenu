@@ -20,5 +20,9 @@ interface MenuDao {
     @Query("SELECT * FROM Cafee WHERE isOrdered=1")
     fun getAllFromIsOrdered() : List<CafeMenu>
 
+//    @Query("DELETE FROM Cafee WHERE isOrdered=1")
+//    fun removeFromOrder() : Int
 
+    @Query("UPDATE Cafee SET isOrdered=0 WHERE isOrdered=1")
+    fun deleteFromOrder() : Int
 }

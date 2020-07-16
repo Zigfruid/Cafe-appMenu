@@ -3,15 +3,17 @@ package com.example.fastfood.CafeeAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.fastfood.Fragments.OrderFragment
 import com.example.fastfood.R
 import com.example.fastfood.data.ModelCafee.CafeMenu
 import com.example.fastfood.data.ModelCafee.MenuClickListener
 import kotlinx.android.synthetic.main.rv_order_item.view.*
 import kotlin.random.Random
 
-class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
+class ChildAdapter(private val listener: MenuClickListener, private val remover: RemoverFromOrder) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
     var item: MutableList<CafeMenu> = mutableListOf()
     set(value) {
@@ -39,6 +41,7 @@ class ChildAdapter(private val listener: MenuClickListener) : RecyclerView.Adapt
                     listener.onItemMenuClickListener(menu.id)
                }
             itemView.btnReOrder.setOnClickListener {
+                remover.RemoverFromOrder(menu.id)
                 removeAt(position)
             }
 

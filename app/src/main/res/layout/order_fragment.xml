@@ -28,9 +28,33 @@
         android:padding="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"/>
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Тут ничего нет"
+        android:gravity="center"
+        android:textColor="@color/redStroke"
+        android:layout_below="@id/tv_order"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:textSize="25sp"
+        android:layout_marginBottom="85dp"
+        android:layout_alignParentStart="true"/>
+    <ImageView
+        android:id="@+id/ivOrderIcon"
+        android:layout_below="@id/tv_order"
+        android:layout_width="150dp"
+        android:layout_marginTop="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:padding="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/foodlogo"
+        />
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/rv_order"
-               tools:listitem="@layout/rv_order_item"
                android:layout_below="@id/tv_order"
                android:layout_alignParentStart="true"
                android:layout_alignParentEnd="true"
