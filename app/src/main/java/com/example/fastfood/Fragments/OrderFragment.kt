@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fastfood.CafeeAdapter.ChildAdapter
@@ -26,7 +29,6 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
 
     private lateinit var dao: MenuDao
     private lateinit var presenter: Presenter
-    private lateinit var mMenu : CafeMenu
     private val mAdapter =  ChildAdapter(this, this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +50,17 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
     override fun onStart() {
         presenter = Presenter(dao , this)
         presenter.getMenuFromOrder()
+        if(mAdapter.item.isEmpty()){
+            rv_order.visibility = View.GONE
+            tvEmpty.visibility = View.VISIBLE
+            ivOrderIcon.visibility = View.VISIBLE
+        }else {
+            rv_order.visibility = View.VISIBLE
+            tvEmpty.visibility = View.GONE
+            ivOrderIcon.visibility = View.GONE
+        }
         super.onStart()
+
     }
 
 
@@ -64,8 +76,9 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
     }
 
     override fun RemoverFromOrder(id: Int) {
-        Toast.makeText(requireContext(), "Продукт был удален из списка", Toast.LENGTH_SHORT).show()
-        dao.removeFromOrder()
+            Toast.makeText(requireContext(), "Продукт был удален из списка", Toast.LENGTH_SHORT).show()
+            dao.deleteFromOrder()
+
     }
 
 }
