@@ -2,6 +2,7 @@ package com.example.fastfood.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -29,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
         dao = MenuDB.getInstance(this).dao()
         mMenu = dao.getMenuById(menuId)
         tvItemProductDetailName.text = mMenu.nameRus
-        tvItemProductDetailCost.text = mMenu.cost
+        tvItemProductDetailCost.text = "${mMenu.cost} руб"
         tvDetails.text = mMenu.details
         tvIngredients.text = mMenu.ingredients
 
@@ -49,6 +50,9 @@ class DetailActivity : AppCompatActivity() {
         ivFinish.setOnClickListener {
             finish()
         }
+        btnQuantity.setOnValueChangeListener { view, oldValue, newValue ->
+            mMenu.quantity = newValue.toString()
+            }
 
     }
 

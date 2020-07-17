@@ -22,7 +22,7 @@ class MainAdapter(private val listener: MenuClickListener): RecyclerView.Adapter
 
         fun popMod(menu: CafeMenu) {
             itemView.tvItemProductName.text = menu.nameRus
-           itemView.tvItemProductCost?.text = menu.cost
+           itemView.tvItemProductCost?.text = "${menu.cost} руб"
             val imageResName = "picture${menu.id}"
             Glide
                 .with(itemView)
