@@ -4,22 +4,33 @@
     android:layout_width="wrap_content"
     android:layout_height="380dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
-    <TextView
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/foodlogo"
+        android:padding="8dp"/>
+
+    <ImageView
         android:id="@+id/tvCheck"
-        android:text="Check : "
-        android:textSize="30sp"
+        android:src="@drawable/check"
         android:textColor="@color/redStroke"
         android:layout_margin="16dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="100dp"
+        android:layout_height="45dp"/>
     <TextView
         android:id="@+id/tvDialogItem1"
+        android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@id/v2"
         android:layout_below="@id/tvCheck"
         android:layout_marginBottom="16dp"
+        android:maxLines="20"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
         android:layout_marginStart="8dp"
@@ -44,8 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_below="@id/v2"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="30dp"
         android:text="2.5$"
         android:textSize="35sp"

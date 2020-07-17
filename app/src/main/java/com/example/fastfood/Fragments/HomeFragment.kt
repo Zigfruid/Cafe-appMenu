@@ -52,7 +52,6 @@ class HomeFragment: Fragment(R.layout.home_fragment)  {
             mBundle.putInt(TYPE_ID, PIZZA)
             mFragment.arguments = mBundle
             childFragmentManager.beginTransaction().replace(R.id.fragment_container, mFragment ).commit()
-
         }
         btnLavash.setOnClickListener {
             btnDrink.setImageResource(R.drawable.drinkfocused)
@@ -64,7 +63,6 @@ class HomeFragment: Fragment(R.layout.home_fragment)  {
             mBundle.putInt(TYPE_ID, LAVASH)
             mFragment.arguments = mBundle
             childFragmentManager.beginTransaction().replace(R.id.fragment_container, mFragment ).commit()
-
         }
         btnBurger.setOnClickListener {
             btnDrink.setImageResource(R.drawable.drinkfocused)
@@ -76,7 +74,6 @@ class HomeFragment: Fragment(R.layout.home_fragment)  {
             mBundle.putInt(TYPE_ID, BURGER)
             mFragment.arguments = mBundle
             childFragmentManager.beginTransaction().replace(R.id.fragment_container, mFragment ).commit()
-
         }
 
     }

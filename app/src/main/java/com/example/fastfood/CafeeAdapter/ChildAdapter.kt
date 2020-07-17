@@ -1,5 +1,6 @@
 package com.example.fastfood.CafeeAdapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.example.fastfood.Fragments.OrderFragment
 import com.example.fastfood.R
 import com.example.fastfood.data.ModelCafee.CafeMenu
 import com.example.fastfood.data.ModelCafee.MenuClickListener
+import kotlinx.android.synthetic.main.dialog_checklist.view.*
 import kotlinx.android.synthetic.main.rv_order_item.view.*
 import kotlin.random.Random
 
@@ -27,11 +29,17 @@ class ChildAdapter(private val listener: MenuClickListener, private val remover:
         notifyItemRangeChanged(position, item.size)
     }
 
+
     inner class ChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun popModOrder(menu: CafeMenu, position: Int) {
-            val a = Random.nextInt(1,10)
             itemView.tvItemOrderName.text = menu.nameRus
-            itemView.tvCurier.text = "Курьер будет через $a мин"
+            itemView.tvCurier.text ="Стоймость : ${menu.cost} руб"
+            if (menu.quantity == null){
+                menu.quantity = 1.toString()
+                itemView.tvQuantity.text = "Количество : ${menu.quantity}"
+            }else {
+                itemView.tvQuantity.text = "Количество : ${menu.quantity}"
+            }
             val imageResName = "picture${menu.id}"
             Glide
                 .with(itemView)
@@ -45,9 +53,10 @@ class ChildAdapter(private val listener: MenuClickListener, private val remover:
                 removeAt(position)
             }
 
-        }
 
     }
+
+         }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildViewHolder {
             val itemView: View =
                 LayoutInflater.from(parent.context).inflate(R.layout.rv_order_item, parent, false)
