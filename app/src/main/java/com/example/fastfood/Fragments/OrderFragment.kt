@@ -43,8 +43,8 @@ class OrderFragment: Fragment(R.layout.order_fragment) , MenuViewHelper, MenuCli
             var nameRus = " "
             for (i in 0 until mAdapter.item.size ){
                 sum += mAdapter.item[i].cost.toInt() * mAdapter.item[i].quantity?.toInt()!!
-                quantity += mAdapter.item[i].quantity?.toInt() ?: 1
-                nameRus = nameRus + "\t" + mAdapter.item[i].nameRus +"....................."+ mAdapter.item[i].cost +"руб" + "\n"
+                quantity = mAdapter.item[i].quantity?.toInt() ?: 1
+                nameRus = nameRus + "\t" + mAdapter.item[i].nameRus + " ($quantity)x" +"................."+ mAdapter.item[i].cost +"руб" + "\n"
             }
             dialog.setContentView(bottomView)
             dialog.behavior.setPeekHeight(1200, true)
