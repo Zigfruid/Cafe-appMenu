@@ -5,13 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.fastfood.R
-import com.example.fastfood.data.ModelCafee.MenuClickListener
-import com.example.fastfood.data.User
-import com.example.fastfood.ui.MenuActivity
 import com.example.fastfood.ui.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.profile_fragment.*
 
 class ProfileFragment: Fragment(R.layout.profile_fragment){
