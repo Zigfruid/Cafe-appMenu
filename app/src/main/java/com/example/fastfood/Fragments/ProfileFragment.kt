@@ -19,16 +19,9 @@ class ProfileFragment: Fragment(R.layout.profile_fragment){
             mAuth.signOut()
             val intent = Intent(requireContext(), SignInActivity::class.java)
             startActivity(intent)
-
+            activity?.finish()
         }
 
     }
-
-//        private fun getCurrentUser(){
-//        val uid = FirebaseAuth.getInstance().uid ?: " "
-//        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-//        val user = User(uid, etRegisterSurname.text.toString())
-//        ref.setValue(user)
-//    }
 
 }
