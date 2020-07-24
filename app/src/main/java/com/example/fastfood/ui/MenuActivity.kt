@@ -9,9 +9,10 @@ import com.example.fastfood.Fragments.OrderFragment
 import com.example.fastfood.Fragments.ProfileFragment
 import com.example.fastfood.MenuRecycleFragment.FragmentMenu
 import com.example.fastfood.R
+import com.example.fastfood.data.ModelCafee.MenuClickListener
 import kotlinx.android.synthetic.main.main_menu.*
 
-class MenuActivity : AppCompatActivity() {
+class MenuActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,7 @@ class MenuActivity : AppCompatActivity() {
                 .commit()
         }
     }
+
 
 
 }
