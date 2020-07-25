@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/signInBackgroundColor"
     tools:context=".ui.SignInActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="match_parent"
+        android:id="@+id/gd2"
+        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        app:layout_constraintGuide_percent="0.1"
+        />
 
     <ImageView
         android:id="@+id/title"
@@ -15,6 +24,7 @@
         android:src="@drawable/welcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gd2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -25,18 +35,28 @@
         android:layout_marginBottom="95dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/gd3"
+
+
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2"
+        android:id="@+id/gd3"/>
+
 
     <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
         android:src="@drawable/logo"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gd2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/etLogin"
+
        />
 
     <EditText
@@ -46,15 +66,16 @@
         android:paddingStart="12dp"
         android:selectAllOnFocus="true"
         android:paddingEnd="12dp"
+        app:layout_constraintEnd_toEndOf="@id/ivContainer"
         android:drawableStart="@drawable/custom_email_icon"
         android:background="@drawable/custom_input"
         app:layout_constraintTop_toTopOf="@id/ivContainer"
-        app:layout_constraintBottom_toBottomOf="@id/ivContainer"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etPassword"
+        app:layout_constraintStart_toStartOf="@id/ivContainer"
         android:hint="Login"
+        android:layout_marginTop="95dp"
         android:drawablePadding="12dp"
-        android:layout_marginBottom="70dp"
-        android:layout_marginStart="70dp"/>
+        />
 
     <EditText
         android:id="@+id/etPassword"
@@ -67,12 +88,13 @@
         android:drawablePadding="12dp"
         app:layout_constraintTop_toTopOf="@id/etLogin"
         app:layout_constraintBottom_toBottomOf="@id/ivContainer"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ivContainer"
         android:hint="Password"
         android:selectAllOnFocus="true"
         android:inputType="textPassword"
         android:layout_marginBottom="45dp"
-        android:layout_marginStart="70dp"/>
+        app:layout_constraintEnd_toEndOf="@id/ivContainer"
+        />
 
     <Button
         android:id="@+id/btnOK"
@@ -83,26 +105,17 @@
         android:layout_marginBottom="35dp"
         android:background="@drawable/btnok"
         />
-    <TextView
-        android:id="@+id/tvForgotPassword"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/btnOK"
-        app:layout_constraintBottom_toBottomOf="@id/btnOK"
-        app:layout_constraintStart_toStartOf="@id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Забыли пароль?"/>
 
     <ImageView
         android:id="@+id/ivRegister"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:src="@drawable/registed"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/ivContainer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="@id/btnOK"
+        app:layout_constraintStart_toStartOf="@id/etPassword"
+        app:layout_constraintTop_toTopOf="@id/btnOK"
+         />
+
     <ProgressBar
         android:id="@+id/loadingProgressBar"
         android:layout_width="20dp"
