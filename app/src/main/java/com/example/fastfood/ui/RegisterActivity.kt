@@ -9,12 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.fastfood.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
 
 
 class RegisterActivity : AppCompatActivity() {
 
     private val mAuth = FirebaseAuth.getInstance()
+    private val fStore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +25,17 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         btnCreateAccount.setOnClickListener {
-            if (etRegisterLogin.text.isNotEmpty() && etRegisterPassword.text.isNotEmpty()){
+            if (etRegisterLogin.text.isNotEmpty() && etRegisterPassword.text.isNotEmpty() && etRegisterSurname.text.isNotEmpty() && etRegisterName.text.isNotEmpty()){
                 loading.visibility = View.VISIBLE
+                val name = etRegisterName.text.toString()
+                val surname = etRegisterSurname.text.toString()
+                val users = fStore.collection("First Collection")
+                val data1 = hashMapOf(
+                    "Name" to name,
+                    "Surname" to surname
+                )
+                users.document("User data").set(data1 as Map<String, Any>)
+
                 mAuth.createUserWithEmailAndPassword(etRegisterLogin.text.toString(), etRegisterPassword.text.toString())
                     .addOnCompleteListener {
                         if (it.isSuccessful){
@@ -33,14 +44,15 @@ class RegisterActivity : AppCompatActivity() {
                             updateUI(user)
                         }else{
                             Toast.makeText(this, it.exception?.localizedMessage, Toast.LENGTH_LONG).show()
-                            Log.d("wasnotdone", it.exception?.localizedMessage)
                             loading.visibility = View.GONE
                         }
                     }
             }else{
                 Toast.makeText(this, "Вводите данные!", Toast.LENGTH_SHORT).show()
             }
+
         }
+
         ivCloseRegister.setOnClickListener {
             finish()
         }
